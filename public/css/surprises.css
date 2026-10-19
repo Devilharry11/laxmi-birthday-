@@ -1,0 +1,150 @@
+/* ==========================================================================
+   DOS LAXMI - Secret Surprise Cards Styles
+   ========================================================================== */
+
+.surprises-section {
+  position: relative;
+  padding: 6.5rem 0;
+}
+
+.surprises-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 2.5rem;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+/* Surprise Card */
+.surprise-card {
+  position: relative;
+  height: 380px;
+  border-radius: 24px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.surprise-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.surprise-card.revealed .surprise-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front Cover (Unrevealed Golden Mystery Foil) */
+.surprise-front, .surprise-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.surprise-front {
+  background: linear-gradient(135deg, #24142f 0%, #170d22 100%);
+  border: 2px dashed rgba(243, 198, 143, 0.45);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(224, 122, 153, 0.15);
+  overflow: hidden;
+}
+
+.surprise-foil-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 50% 50%, rgba(243, 198, 143, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.6;
+}
+
+.surprise-front-badge {
+  font-size: 3.5rem;
+  margin-bottom: 1.2rem;
+  animation: pulseMystery 2.5s infinite ease-in-out;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes pulseMystery {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(243, 198, 143, 0.4)); }
+  50% { transform: scale(1.1); filter: drop-shadow(0 0 25px rgba(224, 122, 153, 0.8)); }
+}
+
+.surprise-front-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.surprise-front-prompt {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  margin-top: 1rem;
+  position: relative;
+  z-index: 2;
+  transition: var(--transition-fast);
+}
+
+.surprise-card:hover .surprise-front-prompt {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Back (Revealed Birthday Coupon / Gift) */
+.surprise-back {
+  background: linear-gradient(145deg, #2a163a 0%, #1a0f26 100%);
+  border: 2px solid var(--color-secondary);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 35px var(--color-primary-glow);
+  transform: rotateY(180deg);
+}
+
+.surprise-gift-icon {
+  font-size: 3.8rem;
+  margin-bottom: 1rem;
+}
+
+.surprise-gift-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.surprise-gift-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #f1ddff;
+  margin-bottom: 1.5rem;
+}
+
+.surprise-gift-tag {
+  font-family: var(--font-cinematic);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--color-secondary);
+  border: 1px solid rgba(243, 198, 143, 0.4);
+  padding: 0.35rem 1rem;
+  border-radius: 50px;
+  background: rgba(243, 198, 143, 0.1);
+  text-transform: uppercase;
+}

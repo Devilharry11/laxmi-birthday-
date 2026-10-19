@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOS LAXMI — Private Admin Portal</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/assets/images/laxmi_sharmeeli.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="/admin-assets/css/admin.css">
+</head>
+<body>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- 1. AUTH SCREEN (Login & Password Reset) -->
+  <div class="admin-auth-screen" id="admin-auth-screen">
+    <div class="auth-box">
+      <div class="auth-logo-badge">👑</div>
+      <h2 class="auth-title">Admin Portal</h2>
+      <p class="auth-subtitle">Content Management for DOS LAXMI</p>
+
+      <!-- Sign In Form -->
+      <form id="admin-login-form">
+        <div class="form-group">
+          <label class="form-label" for="login-email">Admin Email</label>
+          <input type="email" id="login-email" class="form-input" placeholder="aryan@birthday.laxmi" value="aryan@birthday.laxmi" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="login-password">Password</label>
+          <input type="password" id="login-password" class="form-input" placeholder="••••••••" value="AryanLaxmi2026!" required autocomplete="current-password">
+        </div>
+        <div class="auth-actions">
+          <span class="auth-link" id="link-show-reset">Forgot password?</span>
+        </div>
+        <button type="submit" class="btn-admin-submit">Sign In to Portal</button>
+      </form>
+
+      <!-- Password Reset Request Form -->
+      <form id="admin-reset-request-form" style="display: none;">
+        <div class="form-group">
+          <label class="form-label" for="reset-email">Enter Admin Email</label>
+          <input type="email" id="reset-email" class="form-input" placeholder="aryan@birthday.laxmi" required>
+        </div>
+        <div class="auth-actions">
+          <span class="auth-link" id="link-back-to-login">Back to Sign In</span>
+        </div>
+        <button type="submit" class="btn-admin-submit">Generate Reset Token</button>
+      </form>
+
+      <!-- Password Reset Confirmation Form -->
+      <form id="admin-reset-confirm-form" style="display: none;">
+        <div class="form-group">
+          <label class="form-label" for="reset-token">Reset Token</label>
+          <input type="text" id="reset-token" class="form-input" placeholder="Paste reset token" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="reset-new-password">New Password</label>
+          <input type="password" id="reset-new-password" class="form-input" placeholder="Enter new strong password" required minlength="6">
+        </div>
+        <button type="submit" class="btn-admin-submit">Set New Password</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. MAIN ADMIN DASHBOARD APP -->
+  <div class="admin-app" id="admin-app">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-badge">🎂</div>
+        <div>
+          <div class="sidebar-title">DOS LAXMI</div>
+          <div class="sidebar-subtitle">Admin Portal</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a class="nav-item active" data-tab="overview">
+          <span class="nav-icon">📊</span>
+          <span class="nav-text">Overview</span>
+        </a>
+        <a class="nav-item" data-tab="photos">
+          <span class="nav-icon">📸</span>
+          <span class="nav-text">Photos</span>
+        </a>
+        <a class="nav-item" data-tab="scrapbook">
+          <span class="nav-icon">📖</span>
+          <span class="nav-text">Scrapbook</span>
+        </a>
+        <a class="nav-item" data-tab="videos">
+          <span class="nav-icon">🎥</span>
+          <span class="nav-text">Videos</span>
+        </a>
+        <a class="nav-item" data-tab="music">
+          <span class="nav-icon">🎵</span>
+          <span class="nav-text">Music</span>
+        </a>
+        <a class="nav-item" data-tab="typography">
+          <span class="nav-icon">✨</span>
+          <span class="nav-text">Typography</span>
+        </a>
+        <a class="nav-item" data-tab="questions">
+          <span class="nav-icon">💘</span>
+          <span class="nav-text">Questions</span>
+        </a>
+        <a class="nav-item" data-tab="letter">
+          <span class="nav-icon">💌</span>
+          <span class="nav-text">Birthday Letter</span>
+        </a>
+        <a class="nav-item" data-tab="theme">
+          <span class="nav-icon">🎨</span>
+          <span class="nav-text">Theme & Design</span>
+        </a>
+        <a class="nav-item" data-tab="publish">
+          <span class="nav-icon">🚀</span>
+          <span class="nav-text">Publish Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="admin-user-info">
+          <span class="user-name" id="admin-user-email">aryan@birthday.laxmi</span>
+          <span class="user-role">Administrator</span>
+        </div>
+        <button class="btn-logout" id="btn-logout" title="Log Out">⏻</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <!-- Top Sticky Workflow Bar -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <h2 class="page-title" id="admin-page-title">Dashboard Overview</h2>
+          <span class="status-badge published" id="topbar-status-badge">✓ Live & In Sync</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn-topbar btn-save-draft" id="btn-save-draft">Save Draft</button>
+          <button class="btn-topbar btn-preview" id="btn-preview-draft">Preview Draft 👁️</button>
+          <button class="btn-topbar btn-publish" id="btn-publish-live">Publish Live 🚀</button>
+          <button class="btn-topbar btn-discard" id="btn-discard-draft">Discard</button>
+        </div>
+      </header>
+
+      <!-- Content Body -->
+      <div class="admin-content-body">
+        <div class="tab-panel active" id="tab-overview"></div>
+        <div class="tab-panel" id="tab-photos"></div>
+        <div class="tab-panel" id="tab-scrapbook"></div>
+        <div class="tab-panel" id="tab-videos"></div>
+        <div class="tab-panel" id="tab-music"></div>
+        <div class="tab-panel" id="tab-typography"></div>
+        <div class="tab-panel" id="tab-questions"></div>
+        <div class="tab-panel" id="tab-letter"></div>
+        <div class="tab-panel" id="tab-theme"></div>
+        <div class="tab-panel" id="tab-publish"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Interactive Live Preview Modal -->
+  <div class="admin-modal" id="preview-modal">
+    <div class="modal-dialog preview-modal-dialog">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 1.2rem;">👁️</span>
+          <strong style="color: #fff;">Interactive Draft Live Preview</strong>
+        </div>
+        <button class="btn-icon-sm" onclick="closeLivePreview()" title="Close Preview">✕</button>
+      </div>
+      <iframe id="preview-iframe" class="preview-iframe" src="about:blank"></iframe>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="/admin-assets/js/admin-api.js"></script>
+  <script src="/admin-assets/js/admin-auth.js"></script>
+  <script src="/admin-assets/js/admin-ui.js"></script>
+</body>
+</html>

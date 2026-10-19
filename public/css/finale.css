@@ -1,0 +1,152 @@
+/* ==========================================================================
+   DOS LAXMI - Grand Finale & Celebration Styles
+   ========================================================================== */
+
+.finale-section {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 80%, rgba(224, 122, 153, 0.15) 0%, transparent 60%);
+}
+
+#confetti-canvas, #fireworks-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.finale-card {
+  background: rgba(28, 17, 38, 0.88);
+  border: 1px solid rgba(243, 198, 143, 0.35);
+  border-radius: 32px;
+  padding: 4.5rem 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.8), 0 0 50px var(--color-primary-glow);
+  backdrop-filter: blur(20px);
+  position: relative;
+  z-index: 10;
+}
+
+.finale-cake-icon {
+  font-size: 4.5rem;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  animation: floatCake 3s ease-in-out infinite;
+}
+
+@keyframes floatCake {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.finale-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+
+.finale-title span {
+  background: linear-gradient(135deg, #fff 20%, var(--color-primary) 70%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.finale-subtitle {
+  font-size: 1.15rem;
+  color: var(--color-text-muted);
+  max-width: 580px;
+  margin: 0 auto 2.5rem auto;
+  line-height: 1.6;
+}
+
+.finale-wish-btn {
+  font-size: 1.15rem;
+  padding: 1.1rem 3rem;
+  background: linear-gradient(135deg, #f43f5e, #be123c, #9f1239);
+  box-shadow: 0 10px 30px rgba(244, 63, 94, 0.45);
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: var(--transition-smooth);
+}
+.finale-wish-btn:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 16px 40px rgba(244, 63, 94, 0.65);
+}
+
+.finale-love-note {
+  font-family: var(--font-handwriting);
+  font-size: 2rem;
+  color: var(--color-secondary);
+  margin-top: 3rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Sky Lantern / Floating Balloon Animation */
+.wish-balloon {
+  position: fixed;
+  bottom: -100px;
+  width: 50px;
+  height: 65px;
+  background: radial-gradient(circle at 40% 30%, #ff80ab, #f50057);
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  box-shadow: 0 0 25px rgba(255, 64, 129, 0.7), inset 0 -5px 10px rgba(0,0,0,0.2);
+  z-index: 9998;
+  pointer-events: none;
+  animation: floatUpSky linear forwards;
+}
+
+.wish-balloon::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes floatUpSky {
+  0% {
+    transform: translateY(0) scale(0.6) rotate(0deg);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.2) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+/* Footer note */
+.site-footer {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: var(--color-text-dim);
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  z-index: 10;
+}
+
+.site-footer a {
+  color: var(--color-secondary);
+  text-decoration: none;
+}

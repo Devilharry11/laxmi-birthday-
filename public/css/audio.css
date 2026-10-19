@@ -1,0 +1,107 @@
+/* ==========================================================================
+   DOS LAXMI - Floating Ambient Audio Player Styles
+   ========================================================================== */
+
+.audio-player-widget {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(22, 14, 30, 0.88);
+  border: 1px solid rgba(224, 122, 153, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 0.5rem 0.9rem 0.5rem 0.6rem;
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px var(--color-primary-glow);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  user-select: none;
+}
+
+.audio-player-widget:hover {
+  transform: scale(1.05);
+  border-color: var(--color-secondary);
+}
+
+.audio-btn-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), #bd476d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.9rem;
+  box-shadow: 0 0 15px var(--color-primary-glow);
+  flex-shrink: 0;
+}
+
+.audio-info-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.audio-track-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.audio-track-status {
+  font-size: 0.7rem;
+  color: var(--color-secondary);
+}
+
+/* Sound wave equalizer bars */
+.audio-equalizer {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 18px;
+  padding: 0 4px;
+}
+
+.eq-bar {
+  width: 3px;
+  height: 4px;
+  background: var(--color-secondary);
+  border-radius: 2px;
+  transition: height 0.2s ease;
+}
+
+.audio-player-widget.playing .eq-bar:nth-child(1) {
+  animation: equalize 0.8s infinite ease-in-out alternate;
+}
+.audio-player-widget.playing .eq-bar:nth-child(2) {
+  animation: equalize 0.6s infinite ease-in-out alternate 0.2s;
+}
+.audio-player-widget.playing .eq-bar:nth-child(3) {
+  animation: equalize 0.9s infinite ease-in-out alternate 0.4s;
+}
+.audio-player-widget.playing .eq-bar:nth-child(4) {
+  animation: equalize 0.7s infinite ease-in-out alternate 0.1s;
+}
+
+@keyframes equalize {
+  0% { height: 4px; }
+  100% { height: 16px; }
+}
+
+@media (max-width: 600px) {
+  .audio-player-widget {
+    bottom: 18px;
+    right: 18px;
+  }
+  .audio-info-label {
+    display: none;
+  }
+}

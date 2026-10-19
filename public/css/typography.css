@@ -1,0 +1,178 @@
+/* ==========================================================================
+   DOS LAXMI - Cinematic Typography Section Styles
+   ========================================================================== */
+
+.typography-section {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #09050f;
+  padding: 6rem 0;
+}
+
+/* Background video or animated canvas container */
+.typography-bg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.typography-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+.typography-video.has-video {
+  display: block;
+}
+
+.typography-aura-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.typography-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(12, 8, 20, 0.4) 0%, rgba(12, 8, 20, 0.85) 100%);
+  z-index: 2;
+}
+
+/* Cinematic Content */
+.typography-stage {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1000px;
+  text-align: center;
+  padding: 2rem;
+}
+
+.typography-frame {
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.typo-lead {
+  font-family: var(--font-cinematic);
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.typo-highlight {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 7vw, 6.2rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ffffff 10%, #ffd1df 40%, var(--color-primary) 70%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 35px var(--color-primary-glow));
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+}
+
+.typo-sub {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-family: var(--font-handwriting);
+  color: #fce7f3;
+  max-width: 680px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(-15px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+/* Active slide transitions */
+.typography-frame.active .typo-lead {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.typography-frame.active .typo-highlight {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.typography-frame.active .typo-sub {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cinematic Controls */
+.typography-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  z-index: 3;
+  position: relative;
+}
+
+.typo-ctrl-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  backdrop-filter: blur(8px);
+}
+.typo-ctrl-btn:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  transform: scale(1.1);
+}
+
+.typo-indicators {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.typo-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.typo-dot.active {
+  width: 32px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  box-shadow: 0 0 12px var(--color-primary);
+}

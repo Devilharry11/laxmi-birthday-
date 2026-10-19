@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOS LAXMI — Happy Birthday My Love ✨</title>
+  <meta name="description" content="A cinematic, heartfelt celebration of Laxmi's birthday created with love by Aryan.">
+  <link rel="icon" href="/assets/images/laxmi_sharmeeli.jpg" type="image/jpeg">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/hero.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/scrapbook.css">
+  <link rel="stylesheet" href="/css/questions.css">
+  <link rel="stylesheet" href="/css/surprises.css">
+  <link rel="stylesheet" href="/css/letter.css">
+  <link rel="stylesheet" href="/css/finale.css">
+  <link rel="stylesheet" href="/css/audio.css">
+</head>
+<body>
+
+  <!-- Preview Mode Floating Banner (only visible during admin draft preview) -->
+  <div class="preview-banner" id="preview-banner">
+    ✨ PREVIEW MODE: You are currently viewing unpublished draft changes.
+  </div>
+
+  <!-- Background Starfield Particle Canvas -->
+  <canvas id="stars-canvas"></canvas>
+
+  <!-- Special Effect Canvases -->
+  <canvas id="confetti-canvas"></canvas>
+  <canvas id="fireworks-canvas"></canvas>
+
+  <!-- Ambient Audio Floating Player Widget -->
+  <div class="audio-player-widget" id="audio-widget" title="Click to play / pause background melody">
+    <div class="audio-btn-circle">▶</div>
+    <div class="audio-info-label">
+      <span class="audio-track-name">Birthday Melody</span>
+      <span class="audio-track-status">Click to play</span>
+    </div>
+    <div class="audio-equalizer">
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-badge" id="hero-badge">
+              <span>✨</span>
+              <span id="hero-badge-text">September 24 • An Eternal Celebration</span>
+            </div>
+            <h1 class="hero-title" id="hero-greeting">
+              Happy Birthday, <span>Laxmi</span> ❤️
+            </h1>
+            <p class="hero-subtitle" id="hero-subtitle">
+              To the girl whose smile lights up my entire world. Today is all about celebrating you, your kindness, and every precious memory we share.
+            </p>
+            <div class="hero-actions">
+              <a href="#typography-section" class="btn-primary" id="hero-cta-btn">
+                Step Into Your Universe ✨
+              </a>
+              <a href="#scrapbook-section" class="btn-secondary">
+                Explore Memories 📖
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-frame-container">
+              <div class="hero-glow-ring"></div>
+              <div class="hero-floating-tag">
+                <span>👑</span>
+                <strong>Birthday Queen</strong>
+              </div>
+              <div class="hero-image-card">
+                <img src="/assets/images/laxmi_sharmeeli.jpg" alt="Laxmi smiling" class="hero-img" id="hero-img">
+                <div class="hero-image-caption">
+                  <span class="hero-caption-text" id="hero-caption-text">Laxmi ✨</span>
+                  <span style="font-size: 1.4rem;">💖</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CINEMATIC TYPOGRAPHY & VIDEO SECTION -->
+    <section class="typography-section" id="typography-section">
+      <div class="typography-bg-container">
+        <video class="typography-video" id="typography-video" autoplay loop muted playsinline></video>
+        <canvas class="typography-aura-canvas" id="typography-aura-canvas"></canvas>
+        <div class="typography-overlay"></div>
+      </div>
+      <div class="typography-stage" id="typography-stage">
+        <!-- Rendered dynamically by typography.js -->
+      </div>
+    </section>
+
+    <!-- SCRAPBOOK SECTION -->
+    <section class="scrapbook-section" id="scrapbook-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Polaroids & Moments</span>
+          <h2 class="section-title">Our Scrapbook of Memories 📖</h2>
+          <p class="section-subtitle">Little polaroids, big memories, and every single moment with you.</p>
+        </div>
+
+        <div class="scrapbook-album">
+          <div class="scrapbook-tabs" id="scrapbook-tabs">
+            <!-- Tabs injected by scrapbook.js -->
+          </div>
+          <div id="scrapbook-container">
+            <!-- Cards injected by scrapbook.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE QUIZ & QUESTIONS SECTION -->
+    <section class="quiz-section" id="questions-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Playful & Heartfelt</span>
+          <h2 class="section-title">The Laxmi & Aryan Quiz 💘</h2>
+          <p class="section-subtitle">Only the birthday girl can answer these right!</p>
+        </div>
+
+        <div id="quiz-container">
+          <!-- Rendered dynamically by questions.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECRET SURPRISE CARDS SECTION -->
+    <section class="surprises-section" id="surprises-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Hidden Gifts</span>
+          <h2 class="section-title">Secret Birthday Surprises 🎁</h2>
+          <p class="section-subtitle">Scratch or tap to reveal your birthday coupons from Aryan!</p>
+        </div>
+
+        <div id="surprises-container">
+          <!-- Rendered dynamically by surprises.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ARYAN'S PERSONAL BIRTHDAY LETTER SECTION -->
+    <section class="letter-section" id="letter-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Straight From The Heart</span>
+          <h2 class="section-title">A Birthday Letter For You 💌</h2>
+          <p class="section-subtitle">Written especially for you, sealed with endless love.</p>
+        </div>
+
+        <div id="letter-container">
+          <!-- Rendered dynamically by letter.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- GRAND FINALE CELEBRATION SECTION -->
+    <section class="finale-section" id="finale-section">
+      <div class="container">
+        <div id="finale-container">
+          <!-- Rendered dynamically by finale.js -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX MODAL FOR SCRAPBOOK PHOTOS -->
+  <div class="lightbox-modal" id="lightbox-modal">
+    <div class="lightbox-content">
+      <button class="lightbox-close-btn" title="Close Lightbox">✕</button>
+      <div class="lightbox-img-pane">
+        <img src="" alt="" id="lightbox-img">
+      </div>
+      <div class="lightbox-info-pane">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+            <span class="polaroid-date" id="lightbox-date">Date</span>
+            <span class="polaroid-sticker" id="lightbox-sticker" style="display: none;">Sticker</span>
+          </div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 1rem; color: #fff;" id="lightbox-title">Title</h3>
+          <p style="font-family: var(--font-handwriting); font-size: 1.6rem; color: #ffd6e0; line-height: 1.5;" id="lightbox-caption">Caption</p>
+        </div>
+        <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 0.85rem; color: var(--color-text-dim);">Memory Archive</span>
+          <span style="font-size: 1.4rem;">💖</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>DOS LAXMI • Handcrafted with love by Aryan for Laxmi's Birthday ✨</p>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript Libraries -->
+  <script src="/js/hero.js"></script>
+  <script src="/js/typography.js"></script>
+  <script src="/js/scrapbook.js"></script>
+  <script src="/js/questions.js"></script>
+  <script src="/js/surprises.js"></script>
+  <script src="/js/letter.js"></script>
+  <script src="/js/finale.js"></script>
+  <script src="/js/audio.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

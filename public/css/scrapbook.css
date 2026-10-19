@@ -1,0 +1,271 @@
+/* ==========================================================================
+   DOS LAXMI - Scrapbook Section Styles
+   ========================================================================== */
+
+.scrapbook-section {
+  position: relative;
+  padding: 7rem 0;
+  overflow: hidden;
+}
+
+/* Scrapbook Book Container */
+.scrapbook-album {
+  background: rgba(22, 14, 30, 0.85);
+  border: 1px solid rgba(224, 122, 153, 0.25);
+  border-radius: 28px;
+  padding: 3rem;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8), inset 0 0 50px rgba(0, 0, 0, 0.4);
+  position: relative;
+  backdrop-filter: blur(14px);
+}
+
+.scrapbook-album::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(243, 198, 143, 0.25), transparent);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* Page Navigation Tabs */
+.scrapbook-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+
+.scrapbook-tab-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--color-text-muted);
+  padding: 0.6rem 1.4rem;
+  border-radius: 30px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.scrapbook-tab-btn:hover {
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.scrapbook-tab-btn.active {
+  background: linear-gradient(135deg, var(--color-primary), #bd476d);
+  color: #ffffff;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 15px var(--color-primary-glow);
+}
+
+/* Scrapbook Grid of Memory Cards */
+.scrapbook-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem 2.5rem;
+  align-items: start;
+}
+
+/* Polaroid Card */
+.polaroid-card {
+  background: #fdfaf4;
+  padding: 1.25rem 1.25rem 1.75rem 1.25rem;
+  border-radius: 6px;
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  cursor: pointer;
+  transform: rotate(var(--rot, 0deg));
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #2b1f2d;
+}
+
+.polaroid-card:hover {
+  transform: rotate(0deg) scale(1.05) translateY(-8px);
+  box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.8), 0 0 25px var(--color-primary-glow);
+  z-index: 10;
+}
+
+/* Washi Tape Accent */
+.washi-tape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 26px;
+  background: rgba(243, 198, 143, 0.65);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  clip-path: polygon(5% 0%, 95% 0%, 100% 100%, 0% 100%);
+  opacity: 0.85;
+}
+
+/* Photo Thumbnail */
+.polaroid-img-wrapper {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #111;
+  position: relative;
+}
+
+.polaroid-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.polaroid-card:hover .polaroid-img {
+  transform: scale(1.06);
+}
+
+/* Polaroid Details */
+.polaroid-details {
+  padding-top: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.polaroid-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.polaroid-date {
+  font-family: var(--font-cinematic);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #7a5c6e;
+  text-transform: uppercase;
+}
+
+.polaroid-sticker {
+  font-family: var(--font-handwriting);
+  font-size: 1.15rem;
+  background: #ffe4e6;
+  color: #be123c;
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+  transform: rotate(-3deg);
+  display: inline-block;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.polaroid-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1020;
+}
+
+.polaroid-caption {
+  font-family: var(--font-handwriting);
+  font-size: 1.35rem;
+  line-height: 1.4;
+  color: #4a3b4e;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 4, 14, 0.92);
+  backdrop-filter: blur(20px);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.lightbox-modal.active {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightbox-content {
+  background: #1c1424;
+  border: 1px solid rgba(224, 122, 153, 0.3);
+  border-radius: 24px;
+  overflow: hidden;
+  max-width: 900px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 30px var(--color-primary-glow);
+  position: relative;
+}
+
+.lightbox-img-pane {
+  background: #000;
+  max-height: 550px;
+  overflow: hidden;
+}
+
+.lightbox-img-pane img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.lightbox-info-pane {
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: var(--transition-fast);
+}
+.lightbox-close-btn:hover {
+  background: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .scrapbook-album {
+    padding: 1.5rem;
+  }
+  .scrapbook-album::before {
+    display: none;
+  }
+  .lightbox-content {
+    grid-template-columns: 1fr;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+  .lightbox-img-pane {
+    max-height: 300px;
+  }
+}
