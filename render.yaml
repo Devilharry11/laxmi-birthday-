@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: dos-laxmi-birthday
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: ADMIN_EMAIL
+        value: aryan@birthday.laxmi
+      - key: ADMIN_PASSWORD
+        value: AryanLaxmi2026!
+      - key: ADMIN_JWT_SECRET
+        generateValue: true

@@ -61,4 +61,12 @@ async function start() {
   }
 }
 
-start();
+// Start if executed directly
+if (require.main === module) {
+  start();
+} else {
+  // Serverless execution (e.g. Vercel)
+  db.init().catch(console.error);
+}
+
+module.exports = app;
