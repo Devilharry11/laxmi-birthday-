@@ -1,0 +1,96 @@
+/* ==========================================================================
+   DOS LAXMI - Cinematic Movie Prologue Styles
+   ========================================================================== */
+
+.prologue-overlay {
+  position: fixed;
+  inset: 0;
+  background: #08040d;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.prologue-overlay.hidden {
+  opacity: 0;
+  transform: scale(1.08);
+  pointer-events: none;
+}
+
+.prologue-stage {
+  max-width: 650px;
+}
+
+.prologue-studio-name {
+  font-family: var(--font-cinematic);
+  font-size: 0.95rem;
+  letter-spacing: 0.35em;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  animation: fadeIn 1.5s ease;
+}
+
+.prologue-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 4.4rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 0 40px var(--color-primary-glow);
+  animation: fadeIn 2s ease;
+}
+
+.prologue-title span {
+  background: linear-gradient(135deg, #fff 20%, var(--color-primary) 70%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.prologue-credits {
+  font-family: var(--font-cinematic);
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+  animation: fadeIn 2.5s ease;
+}
+
+.prologue-credits strong {
+  color: var(--color-secondary);
+}
+
+.btn-enter-film {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1.1rem 2.8rem;
+  background: linear-gradient(135deg, var(--color-primary), #be123c);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 35px var(--color-primary-glow);
+  transition: var(--transition-smooth);
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+.btn-enter-film:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 45px var(--color-primary-glow);
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(224, 122, 153, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(224, 122, 153, 0.8), 0 0 15px rgba(243, 198, 143, 0.5); }
+}

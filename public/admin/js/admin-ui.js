@@ -56,7 +56,9 @@ function switchTab(tabName) {
     photos: 'Photo Management',
     scrapbook: 'Scrapbook Album Manager',
     videos: 'Video Library',
-    music: 'Music & Audio Panel',
+    music: 'Music & Jukebox Playlist',
+    arcade: 'Love Arcade & Games',
+    reasons: 'Reasons Why I Love You',
     typography: 'Cinematic Typography',
     questions: 'Questions & Quiz Editor',
     letter: 'Birthday Letter & Signature',
@@ -81,6 +83,8 @@ function renderCurrentTab() {
     case 'scrapbook': renderScrapbookTab(); break;
     case 'videos': renderVideosTab(); break;
     case 'music': renderMusicTab(); break;
+    case 'arcade': renderArcadeTab(); break;
+    case 'reasons': renderReasonsTab(); break;
     case 'typography': renderTypographyTab(); break;
     case 'questions': renderQuestionsTab(); break;
     case 'letter': renderLetterTab(); break;
@@ -218,17 +222,17 @@ function renderOverview() {
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">🎥</div>
+        <div class="stat-icon">🎮</div>
         <div>
-          <div class="stat-value">${currentSummary.totalVideos}</div>
-          <div class="stat-label">Uploaded Videos</div>
+          <div class="stat-value">2</div>
+          <div class="stat-label">Arcade Games Active</div>
         </div>
       </div>
       <div class="stat-card">
         <div class="stat-icon">🎵</div>
         <div>
           <div class="stat-value" style="font-size: 1.1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;">
-            ${currentDraft?.music?.trackTitle || 'Ambient'}
+            ${currentDraft?.music?.trackTitle || 'Sharmeeli'}
           </div>
           <div class="stat-label">Active Music Track</div>
         </div>
@@ -265,9 +269,10 @@ function renderOverview() {
       <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
         <button class="btn-topbar btn-save-draft" onclick="switchTab('photos')">Upload Photos 📸</button>
         <button class="btn-topbar btn-save-draft" onclick="switchTab('scrapbook')">Edit Scrapbook 📖</button>
-        <button class="btn-topbar btn-save-draft" onclick="switchTab('music')">Change Birthday Song 🎵</button>
+        <button class="btn-topbar btn-save-draft" onclick="switchTab('music')">Manage Playlist 🎧</button>
+        <button class="btn-topbar btn-save-draft" onclick="switchTab('reasons')">Edit Reasons I Love You ✨</button>
+        <button class="btn-topbar btn-save-draft" onclick="switchTab('arcade')">Love Arcade Settings 🕹️</button>
         <button class="btn-topbar btn-save-draft" onclick="switchTab('letter')">Edit Birthday Letter 💌</button>
-        <button class="btn-topbar btn-save-draft" onclick="switchTab('theme')">Adjust Colors & Theme 🎨</button>
       </div>
     </div>
   `;
@@ -317,7 +322,6 @@ function renderPhotosTab() {
               ${p.isHero || currentDraft?.meta?.heroPhotoUrl === p.url ? '<div class="media-hero-badge">Hero Image</div>' : ''}
               <div class="media-actions-overlay">
                 <button class="btn-icon-sm" onclick="setPhotoAsHero('${p.url}')" title="Set as Hero Image">👑</button>
-                <button class="btn-icon-sm" onclick="editPhotoMeta('${p.id}')" title="Edit Captions">✏️</button>
                 <button class="btn-icon-sm delete" onclick="confirmDeleteMedia('${p.id}')" title="Delete Photo">🗑️</button>
               </div>
             </div>
@@ -614,38 +618,38 @@ function renderMusicTab() {
   if (!panel || !currentDraft) return;
 
   const music = currentDraft.music || {};
+  const playlist = music.playlist || [];
 
   panel.innerHTML = `
     <div class="admin-card">
-      <h3 class="card-title">Music & Audio Control Panel</h3>
-      <p class="card-desc">Manage the romantic background music track for Laxmi's birthday website.</p>
+      <h3 class="card-title">Music & Vinyl Jukebox Playlist</h3>
+      <p class="card-desc">Manage the romantic songs for Laxmi's birthday website (including her favorites like <em>Sharmeeli</em> and <em>Maula Mere Maula</em>).</p>
 
-      <div class="form-group">
-        <label class="form-label">Track Title</label>
-        <input type="text" class="form-input" id="music-title" value="${music.trackTitle || ''}">
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Artist / Dedication</label>
-        <input type="text" class="form-input" id="music-artist" value="${music.trackArtist || ''}">
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Audio File URL</label>
-        <input type="text" class="form-input" id="music-url" value="${music.audioUrl || ''}">
+      <div style="margin-bottom: 2rem;">
+        <label class="form-label">Active Jukebox Playlist:</label>
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          ${playlist.map((tr, idx) => `
+            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.3); padding: 1rem 1.25rem; border-radius: 12px; border: 1px solid var(--admin-card-border);">
+              <div>
+                <strong style="color: #fff; font-size: 1.05rem;">${tr.title}</strong>
+                <span style="color: var(--admin-secondary); font-size: 0.85rem; margin-left: 8px;">— ${tr.artist}</span>
+                <div style="color: var(--admin-text-muted); font-size: 0.8rem; margin-top: 4px;">Lyrics snippet: <em>"${tr.lyrics || ''}"</em></div>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <button class="btn-topbar ${music.audioUrl === tr.url ? 'btn-publish' : 'btn-save-draft'}" style="padding: 0.35rem 0.8rem; font-size: 0.8rem;" onclick="setActiveTrack('${tr.url}', '${tr.title}', '${tr.artist}')">
+                  ${music.audioUrl === tr.url ? 'Active Now ✓' : 'Set Active'}
+                </button>
+              </div>
+            </div>
+          `).join('')}
+        </div>
       </div>
 
       <div class="upload-dropzone" id="audio-dropzone" style="padding: 2rem; margin: 1.5rem 0;">
         <div class="dropzone-icon">🎵</div>
-        <div class="dropzone-text">Upload MP3 or WAV Audio Track</div>
-        <div class="dropzone-hint">Upload custom romantic song or dedication</div>
+        <div class="dropzone-text">Upload New Song (MP3 or WAV)</div>
+        <div class="dropzone-hint">Upload custom song or dedication for Laxmi</div>
         <input type="file" id="audio-file-input" accept="audio/*" style="display: none;">
-      </div>
-
-      <!-- Audio Preview Player -->
-      <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 14px; border: 1px solid var(--admin-card-border); margin-bottom: 1.5rem;">
-        <label class="form-label">Live Audio Preview</label>
-        <audio controls src="${music.audioUrl || ''}" id="admin-audio-preview" style="width: 100%; margin-top: 0.5rem;"></audio>
       </div>
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
@@ -654,22 +658,11 @@ function renderMusicTab() {
           <input type="range" min="0" max="1" step="0.05" class="form-input" id="music-volume" value="${music.defaultVolume ?? 0.75}" style="padding: 0;">
         </div>
         <div>
-          <label class="form-label">Show Music Controls on Public Site</label>
+          <label class="form-label">Show Floating Audio Player Widget</label>
           <select class="form-select" id="music-show-controls">
-            <option value="true" ${music.showControls !== false ? 'selected' : ''}>Enabled (Floating Player Visible)</option>
-            <option value="false" ${music.showControls === false ? 'selected' : ''}>Hidden (Play Silently in Background)</option>
+            <option value="true" ${music.showControls !== false ? 'selected' : ''}>Enabled (Visible)</option>
+            <option value="false" ${music.showControls === false ? 'selected' : ''}>Hidden</option>
           </select>
-        </div>
-      </div>
-
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-        <div>
-          <label class="form-label">Segment Start Time (seconds)</label>
-          <input type="number" min="0" class="form-input" id="music-start-time" value="${music.startTime || 0}">
-        </div>
-        <div>
-          <label class="form-label">Segment End Time (0 for full length)</label>
-          <input type="number" min="0" class="form-input" id="music-end-time" value="${music.endTime || 0}">
         </div>
       </div>
     </div>
@@ -694,6 +687,124 @@ function renderMusicTab() {
       }
     });
   }
+}
+
+function setActiveTrack(url, title, artist) {
+  if (!currentDraft.music) currentDraft.music = {};
+  currentDraft.music.audioUrl = url;
+  currentDraft.music.trackTitle = title;
+  currentDraft.music.trackArtist = artist;
+  saveDraftChanges(true);
+  renderMusicTab();
+  window.showToast(`Set "${title}" as default active song! 🎶`, 'success');
+}
+
+// TAB: Arcade
+function renderArcadeTab() {
+  const panel = document.getElementById('tab-arcade');
+  if (!panel || !currentDraft) return;
+
+  const fortunes = currentDraft.fortunes || [];
+
+  panel.innerHTML = `
+    <div class="admin-card">
+      <h3 class="card-title">Love Arcade & Mini-Games</h3>
+      <p class="card-desc">Configure the falling treasure game and custom love fortune predictions.</p>
+
+      <div style="margin-bottom: 2rem;">
+        <label class="form-label">Fortune Cookie Love Predictions (${fortunes.length})</label>
+        <p style="font-size: 0.85rem; color: var(--admin-text-muted); margin-bottom: 1rem;">
+          These are the romantic slips of paper that appear when Laxmi cracks open the 3D golden fortune cookie!
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          ${fortunes.map((f, idx) => `
+            <div style="display: flex; gap: 10px;">
+              <input type="text" class="form-input fortune-item-input" data-idx="${idx}" value="${f}">
+              <button class="btn-topbar btn-discard" style="padding: 0.2rem 0.7rem;" onclick="deleteFortune(${idx})">✕</button>
+            </div>
+          `).join('')}
+        </div>
+        <button class="btn-topbar btn-publish" style="margin-top: 1rem;" onclick="addFortune()">+ Add Fortune Prediction</button>
+      </div>
+    </div>
+  `;
+}
+
+function addFortune() {
+  if (!currentDraft.fortunes) currentDraft.fortunes = [];
+  currentDraft.fortunes.push("Special Promise: 1 unconditional romantic dinner date with Aryan! 🍷");
+  renderArcadeTab();
+}
+
+function deleteFortune(idx) {
+  currentDraft.fortunes.splice(idx, 1);
+  renderArcadeTab();
+}
+
+// TAB: Reasons
+function renderReasonsTab() {
+  const panel = document.getElementById('tab-reasons');
+  if (!panel || !currentDraft) return;
+
+  const reasons = currentDraft.reasons?.items || [];
+
+  panel.innerHTML = `
+    <div class="admin-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <div>
+          <h3 class="card-title">Reasons Why I Love You (${reasons.length})</h3>
+          <p class="card-desc">The glowing starlight cards celebrating everything that makes Laxmi special to Aryan.</p>
+        </div>
+        <button class="btn-topbar btn-publish" onclick="addReason()">+ Add Reason</button>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Love Journey Start Date (Anniversary / First Day)</label>
+        <input type="datetime-local" class="form-input" id="meta-start-date" value="${(currentDraft.meta?.startDate || '2023-09-21T00:00:00').substring(0, 16)}">
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem;">
+        ${reasons.map((r, idx) => `
+          <div class="admin-card" style="margin-bottom: 0; background: rgba(14, 9, 22, 0.7); border: 1px solid var(--admin-card-border); padding: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span style="font-weight: 700; color: var(--admin-secondary);">Card #${idx + 1}</span>
+              <button class="btn-topbar btn-discard" style="padding: 0.2rem 0.6rem;" onclick="deleteReason(${idx})">Delete</button>
+            </div>
+            <div style="display: grid; grid-template-columns: 80px 1fr; gap: 1rem; margin-bottom: 0.75rem;">
+              <div>
+                <label class="form-label">Icon</label>
+                <input type="text" class="form-input reason-icon-input" data-idx="${idx}" value="${r.icon || '✨'}">
+              </div>
+              <div>
+                <label class="form-label">Title</label>
+                <input type="text" class="form-input reason-title-input" data-idx="${idx}" value="${r.title || ''}">
+              </div>
+            </div>
+            <div>
+              <label class="form-label">Loving Note</label>
+              <textarea class="form-textarea reason-text-input" data-idx="${idx}" rows="2">${r.text || ''}</textarea>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function addReason() {
+  if (!currentDraft.reasons) currentDraft.reasons = { items: [] };
+  currentDraft.reasons.items.push({
+    id: `r-${Date.now()}`,
+    title: "New Reason",
+    icon: "💖",
+    text: "Another reason why you mean the entire world to me."
+  });
+  renderReasonsTab();
+}
+
+function deleteReason(idx) {
+  currentDraft.reasons.items.splice(idx, 1);
+  renderReasonsTab();
 }
 
 // TAB: Typography
@@ -722,11 +833,11 @@ function renderTypographyTab() {
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 1rem; margin-bottom: 0.75rem;">
               <div>
-                <label class="form-label">Leading Text (e.g. YOU ARE)</label>
+                <label class="form-label">Leading Text</label>
                 <input type="text" class="form-input typo-lead-input" data-idx="${idx}" value="${p.lead || ''}">
               </div>
               <div>
-                <label class="form-label">Highlighted Word (e.g. UNSTOPPABLE)</label>
+                <label class="form-label">Highlighted Word</label>
                 <input type="text" class="form-input typo-high-input" data-idx="${idx}" value="${p.highlight || ''}">
               </div>
             </div>
@@ -873,7 +984,7 @@ function renderThemeTab() {
   if (!panel || !currentDraft) return;
 
   const theme = currentDraft.meta?.theme || {};
-  const order = currentDraft.sectionOrder || ['hero', 'typography', 'scrapbook', 'questions', 'surprises', 'letter', 'finale'];
+  const order = currentDraft.sectionOrder || ['hero', 'typography', 'jukebox', 'scrapbook', 'arcade', 'reasons', 'questions', 'surprises', 'letter', 'finale'];
 
   panel.innerHTML = `
     <div class="admin-card">
@@ -1010,22 +1121,36 @@ function collectFormInputs() {
     if (currentDraft.scrapbook?.pages[idx]) currentDraft.scrapbook.pages[idx].photoUrl = el.value;
   });
 
-  // Music inputs
-  const mTitle = document.getElementById('music-title');
-  const mArtist = document.getElementById('music-artist');
-  const mUrl = document.getElementById('music-url');
+  // Music volume
   const mVol = document.getElementById('music-volume');
   const mShow = document.getElementById('music-show-controls');
-  const mStart = document.getElementById('music-start-time');
-  const mEnd = document.getElementById('music-end-time');
-
-  if (mTitle && currentDraft.music) currentDraft.music.trackTitle = mTitle.value;
-  if (mArtist && currentDraft.music) currentDraft.music.trackArtist = mArtist.value;
-  if (mUrl && currentDraft.music) currentDraft.music.audioUrl = mUrl.value;
   if (mVol && currentDraft.music) currentDraft.music.defaultVolume = parseFloat(mVol.value);
   if (mShow && currentDraft.music) currentDraft.music.showControls = mShow.value === 'true';
-  if (mStart && currentDraft.music) currentDraft.music.startTime = parseFloat(mStart.value) || 0;
-  if (mEnd && currentDraft.music) currentDraft.music.endTime = parseFloat(mEnd.value) || 0;
+
+  // Fortunes
+  const fortuneInputs = document.querySelectorAll('.fortune-item-input');
+  if (fortuneInputs.length > 0) {
+    currentDraft.fortunes = Array.from(fortuneInputs).map(i => i.value);
+  }
+
+  // Reasons
+  document.querySelectorAll('.reason-icon-input').forEach(el => {
+    const idx = parseInt(el.getAttribute('data-idx'), 10);
+    if (currentDraft.reasons?.items[idx]) currentDraft.reasons.items[idx].icon = el.value;
+  });
+  document.querySelectorAll('.reason-title-input').forEach(el => {
+    const idx = parseInt(el.getAttribute('data-idx'), 10);
+    if (currentDraft.reasons?.items[idx]) currentDraft.reasons.items[idx].title = el.value;
+  });
+  document.querySelectorAll('.reason-text-input').forEach(el => {
+    const idx = parseInt(el.getAttribute('data-idx'), 10);
+    if (currentDraft.reasons?.items[idx]) currentDraft.reasons.items[idx].text = el.value;
+  });
+
+  const startDateInput = document.getElementById('meta-start-date');
+  if (startDateInput && currentDraft.meta) {
+    currentDraft.meta.startDate = startDateInput.value;
+  }
 
   // Typography inputs
   document.querySelectorAll('.typo-lead-input').forEach(el => {
@@ -1115,3 +1240,8 @@ window.addQuizQuestion = addQuizQuestion;
 window.deleteQuizQuestion = deleteQuizQuestion;
 window.moveSectionOrder = moveSectionOrder;
 window.publishDraftLive = publishDraftLive;
+window.setActiveTrack = setActiveTrack;
+window.addFortune = addFortune;
+window.deleteFortune = deleteFortune;
+window.addReason = addReason;
+window.deleteReason = deleteReason;

@@ -10,6 +10,7 @@ const defaultContent = {
     heroBadge: "September 24 • An Eternal Celebration",
     heroCtaText: "Step Into Your Universe ✨",
     heroPhotoUrl: "/assets/images/laxmi_sharmeeli.jpg",
+    startDate: "2023-09-21T00:00:00",
     theme: {
       primaryColor: "#e07a99",
       secondaryColor: "#f3c68f",
@@ -19,14 +20,39 @@ const defaultContent = {
     }
   },
   music: {
-    trackTitle: "Sharmeeli x Birthday Ambient Melody",
-    trackArtist: "Frappe Ash / Aryan's Dedication",
-    audioUrl: "/assets/audio/birthday_ambient.wav",
-    defaultVolume: 0.75,
+    trackTitle: "Sharmeeli",
+    trackArtist: "Frappe Ash, Toorjo Dey (Laxmi's Jam)",
+    audioUrl: "/assets/audio/sharmeeli_melody.wav",
+    defaultVolume: 0.8,
     startTime: 0,
     endTime: 0,
     showControls: true,
-    autoplayPrompt: "Click anywhere to turn on the music ✨"
+    playlist: [
+      {
+        id: "track-1",
+        title: "Sharmeeli",
+        artist: "Frappe Ash & Toorjo Dey",
+        tag: "Sept 21 Favorite",
+        url: "/assets/audio/sharmeeli_melody.wav",
+        lyrics: "Tera yeh sharmaana, dil ko chhu jaana... 🎶"
+      },
+      {
+        id: "track-2",
+        title: "Maula Mere Maula",
+        artist: "Roop Kumar Rathod",
+        tag: "Sept 24 Kurta & Jhumka Vibe",
+        url: "/assets/audio/maula_mere_melody.wav",
+        lyrics: "Aankhein teri kitni haseen, ke inka aashik main ban gaya hoon... ✨"
+      },
+      {
+        id: "track-3",
+        title: "Birthday Ambient Music Box",
+        artist: "Aryan's Dedication",
+        tag: "Soft & Romantic",
+        url: "/assets/audio/birthday_ambient.wav",
+        lyrics: "May all your sweetest dreams come true tonight... 🎂"
+      }
+    ]
   },
   typography: {
     enabled: true,
@@ -55,6 +81,77 @@ const defaultContent = {
       }
     ]
   },
+  jukebox: {
+    enabled: true,
+    title: "Laxmi's Favorite Songs 🎧",
+    subtitle: "Spin the vinyl and listen to the melodies that tell our story."
+  },
+  arcade: {
+    enabled: true,
+    title: "The Love Arcade 🕹️",
+    subtitle: "Play cute mini-games made just for the birthday girl!",
+    fallingGame: {
+      enabled: true,
+      title: "Catch Laxmi's Jhumkas & Hearts 💖",
+      description: "Move the basket to catch falling hearts, jhumkas, and cupcakes. Score 100 points to unlock the Secret Vault!"
+    },
+    fortuneCookie: {
+      enabled: true,
+      title: "Aryan's Fortune Cookie Oracle 🥠",
+      description: "Crack the golden cookie to reveal your customized love prediction!"
+    }
+  },
+  reasons: {
+    enabled: true,
+    title: "Reasons Why I Love You ✨",
+    subtitle: "Click each glowing star to reveal a piece of my heart.",
+    items: [
+      {
+        id: "r-1",
+        title: "Your Infectious Laughter",
+        icon: "✨",
+        text: "The way you throw your head back and laugh with pure joy. It is genuinely the sweetest sound in my universe."
+      },
+      {
+        id: "r-2",
+        title: "The Silver Jhumkas Look",
+        icon: "🪙",
+        text: "When you wear that white printed kurta and those silver jhumkas on September 24, my heart literally skips a beat every time."
+      },
+      {
+        id: "r-3",
+        title: "The Goofy Wink",
+        icon: "😉",
+        text: "Your 'sharmeeli' wink and thumbs up. You are unapologetically adorable and authentic."
+      },
+      {
+        id: "r-4",
+        title: "How Safe You Make Me Feel",
+        icon: "🛡️",
+        text: "Even on the craziest days, talking to you feels like coming home to a warm, calm sanctuary."
+      },
+      {
+        id: "r-5",
+        title: "Your Fearless Ambition",
+        icon: "🚀",
+        text: "You dream so big and work so hard. Seeing your passion inspires me to be the best version of myself."
+      },
+      {
+        id: "r-6",
+        title: "Just Being Laxmi",
+        icon: "💖",
+        text: "Because in a world where everyone tries to be someone else, nobody could ever be as wonderfully, magically cutuu as you."
+      }
+    ]
+  },
+  fortunes: [
+    "Aryan is officially declaring today as National Laxmi Day! 👑",
+    "Prediction: You will receive infinite forehead kisses and warm hugs this year. 🥰",
+    "Special Pass: Aryan will cook/order your favorite food with zero complaints today. 🍕",
+    "The stars confirm: You are officially 1,000,000 times cuter than any kitten. 🐱",
+    "Voucher: 1 late-night drive with the windows down and your favorite playlist on loop. 🚗💨",
+    "A secret wish you made in silence is about to come true this year. ✨"
+  ],
   scrapbook: {
     enabled: true,
     title: "Our Scrapbook of Memories 📖",
@@ -196,7 +293,7 @@ Happy Birthday, Laxmi. Here is to another year of us making unforgettable storie
     confettiEnabled: true,
     fireworksEnabled: true
   },
-  sectionOrder: ["hero", "typography", "scrapbook", "questions", "surprises", "letter", "finale"]
+  sectionOrder: ["hero", "typography", "jukebox", "scrapbook", "arcade", "reasons", "questions", "surprises", "letter", "finale"]
 };
 
 module.exports = defaultContent;

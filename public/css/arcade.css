@@ -1,0 +1,212 @@
+/* ==========================================================================
+   DOS LAXMI - Love Arcade Mini-Games Styles
+   ========================================================================== */
+
+.arcade-section {
+  position: relative;
+  padding: 6.5rem 0;
+  background: radial-gradient(circle at 50% 30%, rgba(26, 14, 38, 0.9) 0%, rgba(10, 6, 15, 0.95) 100%);
+}
+
+.arcade-tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.arcade-tab-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--color-text-muted);
+  padding: 0.75rem 1.75rem;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-fast);
+}
+
+.arcade-tab-btn:hover {
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.arcade-tab-btn.active {
+  background: linear-gradient(135deg, var(--color-primary), #be123c);
+  color: #fff;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 20px var(--color-primary-glow);
+}
+
+/* Game 1: Catch Falling Hearts & Jhumkas */
+.arcade-game-wrapper {
+  background: rgba(22, 14, 32, 0.82);
+  border: 1px solid rgba(224, 122, 153, 0.3);
+  border-radius: 28px;
+  padding: 2.5rem;
+  max-width: 850px;
+  margin: 0 auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(16px);
+  text-align: center;
+}
+
+.game-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+}
+
+.hud-score-box {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--color-secondary);
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-secondary);
+}
+
+.game-canvas-container {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background: #0d0714;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(243, 198, 143, 0.2);
+  margin-bottom: 1.5rem;
+  cursor: crosshair;
+}
+
+#arcade-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.game-start-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 7, 20, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 10;
+}
+
+/* Game 2: Golden Fortune Cookie Oracle */
+.fortune-cookie-wrapper {
+  background: rgba(22, 14, 32, 0.82);
+  border: 1px solid rgba(243, 198, 143, 0.3);
+  border-radius: 28px;
+  padding: 3.5rem 2.5rem;
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+}
+
+.cookie-interactive-stage {
+  margin: 2rem auto;
+  cursor: pointer;
+  display: inline-block;
+  perspective: 1000px;
+}
+
+.fortune-cookie-3d {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto;
+  font-size: 6.5rem;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  filter: drop-shadow(0 10px 25px rgba(243, 198, 143, 0.4));
+  user-select: none;
+}
+
+.fortune-cookie-3d:hover {
+  transform: scale(1.12) rotate(-5deg);
+}
+
+.fortune-cookie-3d.cracked {
+  animation: crackShake 0.6s ease;
+}
+
+@keyframes crackShake {
+  0% { transform: scale(1) rotate(0); }
+  25% { transform: scale(1.2) rotate(8deg); }
+  50% { transform: scale(1.1) rotate(-8deg); }
+  75% { transform: scale(1.25) rotate(4deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+.fortune-parchment-slip {
+  display: none;
+  background: #fdfaf3;
+  color: #2b1f2d;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(243, 198, 143, 0.2);
+  margin-top: 2rem;
+  position: relative;
+  border-left: 4px solid var(--color-primary);
+  animation: slideSlip 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideSlip {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.fortune-slip-text {
+  font-family: var(--font-handwriting);
+  font-size: 1.8rem;
+  color: #881337;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+.fortune-slip-sub {
+  font-family: var(--font-cinematic);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: #7a5c6e;
+  text-transform: uppercase;
+}
+
+/* Secret Vault Modal */
+.vault-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 6, 15, 0.94);
+  backdrop-filter: blur(20px);
+  z-index: 99999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.vault-modal.active {
+  display: flex;
+}
+
+.vault-box {
+  background: #1b1226;
+  border: 2px solid var(--color-secondary);
+  border-radius: 28px;
+  padding: 3rem 2.5rem;
+  max-width: 550px;
+  text-align: center;
+  box-shadow: 0 0 50px var(--color-primary-glow);
+  position: relative;
+}

@@ -3,8 +3,9 @@
 document.addEventListener('DOMContentLoaded', async () => {
   console.log('[DOS LAXMI] Booting birthday experience...');
 
-  // 1. Initialize background stars
+  // 1. Initialize background stars & prologue
   if (window.initStarfield) window.initStarfield();
+  if (window.initPrologue) window.initPrologue();
 
   // 2. Determine whether we are in preview mode
   const urlParams = new URLSearchParams(window.location.search);
@@ -60,11 +61,32 @@ document.addEventListener('DOMContentLoaded', async () => {
     hideSection('typography-section');
   }
 
+  // Initialize Jukebox
+  if (contentData.jukebox?.enabled !== false && window.initJukebox) {
+    window.initJukebox(contentData.music);
+  } else {
+    hideSection('jukebox-section');
+  }
+
   // Initialize Scrapbook
   if (contentData.scrapbook?.enabled !== false && window.initScrapbook) {
     window.initScrapbook(contentData.scrapbook.pages);
   } else {
     hideSection('scrapbook-section');
+  }
+
+  // Initialize Love Arcade Games
+  if (contentData.arcade?.enabled !== false && window.initArcade) {
+    window.initArcade(contentData.arcade, contentData.fortunes);
+  } else {
+    hideSection('arcade-section');
+  }
+
+  // Initialize Reasons Constellation
+  if (contentData.reasons?.enabled !== false && window.initReasons) {
+    window.initReasons(contentData.reasons, contentData.meta?.startDate);
+  } else {
+    hideSection('reasons-section');
   }
 
   // Initialize Questions
@@ -148,7 +170,10 @@ function reorderSections(order) {
   const map = {
     hero: 'hero-section',
     typography: 'typography-section',
+    jukebox: 'jukebox-section',
     scrapbook: 'scrapbook-section',
+    arcade: 'arcade-section',
+    reasons: 'reasons-section',
     questions: 'questions-section',
     surprises: 'surprises-section',
     letter: 'letter-section',

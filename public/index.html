@@ -9,9 +9,13 @@
 
   <!-- CSS Stylesheets -->
   <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prologue.css">
   <link rel="stylesheet" href="/css/hero.css">
   <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/jukebox.css">
   <link rel="stylesheet" href="/css/scrapbook.css">
+  <link rel="stylesheet" href="/css/arcade.css">
+  <link rel="stylesheet" href="/css/reasons.css">
   <link rel="stylesheet" href="/css/questions.css">
   <link rel="stylesheet" href="/css/surprises.css">
   <link rel="stylesheet" href="/css/letter.css">
@@ -19,6 +23,21 @@
   <link rel="stylesheet" href="/css/audio.css">
 </head>
 <body>
+
+  <!-- Cinematic Movie Opening Prologue Overlay -->
+  <div class="prologue-overlay" id="prologue-overlay">
+    <div class="prologue-stage">
+      <div class="prologue-studio-name">DOS LAXMI ENTERTAINMENT PRESENTS</div>
+      <h1 class="prologue-title">The <span>Laxmi</span> Story ❤️</h1>
+      <div class="prologue-credits">
+        Starring <strong>Laxmi</strong> • Written & Directed by <strong>Aryan</strong>
+      </div>
+      <button class="btn-enter-film" id="btn-enter-film">
+        <span>Begin The Experience</span>
+        <span>✨🎬</span>
+      </button>
+    </div>
+  </div>
 
   <!-- Preview Mode Floating Banner (only visible during admin draft preview) -->
   <div class="preview-banner" id="preview-banner">
@@ -36,7 +55,7 @@
   <div class="audio-player-widget" id="audio-widget" title="Click to play / pause background melody">
     <div class="audio-btn-circle">▶</div>
     <div class="audio-info-label">
-      <span class="audio-track-name">Birthday Melody</span>
+      <span class="audio-track-name">Sharmeeli</span>
       <span class="audio-track-status">Click to play</span>
     </div>
     <div class="audio-equalizer">
@@ -67,8 +86,8 @@
               <a href="#typography-section" class="btn-primary" id="hero-cta-btn">
                 Step Into Your Universe ✨
               </a>
-              <a href="#scrapbook-section" class="btn-secondary">
-                Explore Memories 📖
+              <a href="#jukebox-section" class="btn-secondary">
+                Spin Playlist 🎧
               </a>
             </div>
           </div>
@@ -105,6 +124,21 @@
       </div>
     </section>
 
+    <!-- VINTAGE VINYL JUKEBOX SECTION -->
+    <section class="jukebox-section" id="jukebox-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Her Soundtrack</span>
+          <h2 class="section-title">Laxmi's Favorite Songs 🎧</h2>
+          <p class="section-subtitle">Spin the vintage vinyl and listen to the melodies that tell our story.</p>
+        </div>
+
+        <div class="jukebox-container" id="jukebox-container">
+          <!-- Rendered dynamically by jukebox.js -->
+        </div>
+      </div>
+    </section>
+
     <!-- SCRAPBOOK SECTION -->
     <section class="scrapbook-section" id="scrapbook-section">
       <div class="container">
@@ -121,6 +155,36 @@
           <div id="scrapbook-container">
             <!-- Cards injected by scrapbook.js -->
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE LOVE ARCADE MINI-GAMES SECTION -->
+    <section class="arcade-section" id="arcade-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Playful & Fun</span>
+          <h2 class="section-title">The Love Arcade 🕹️</h2>
+          <p class="section-subtitle">Cute mini-games made just for the birthday girl!</p>
+        </div>
+
+        <div id="arcade-container">
+          <!-- Rendered dynamically by arcade.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- REASONS WHY I LOVE YOU CONSTELLATION SECTION -->
+    <section class="reasons-section" id="reasons-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">From Aryan's Heart</span>
+          <h2 class="section-title">Reasons Why I Love You ✨</h2>
+          <p class="section-subtitle">Click each glowing card to reveal a piece of my heart.</p>
+        </div>
+
+        <div id="reasons-container">
+          <!-- Rendered dynamically by reasons.js -->
         </div>
       </div>
     </section>
@@ -213,8 +277,12 @@
 
   <!-- Core JavaScript Libraries -->
   <script src="/js/hero.js"></script>
+  <script src="/js/prologue.js"></script>
   <script src="/js/typography.js"></script>
+  <script src="/js/jukebox.js"></script>
   <script src="/js/scrapbook.js"></script>
+  <script src="/js/arcade.js"></script>
+  <script src="/js/reasons.js"></script>
   <script src="/js/questions.js"></script>
   <script src="/js/surprises.js"></script>
   <script src="/js/letter.js"></script>
